@@ -1,0 +1,9 @@
+{
+  "name": "youtube-dl-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ryanoshea/youtube-dl-server.git",
+  "author": "Ryan O'Shea <ryan@ryanoshea.com>",
+  "license": "MPL-2",
+  "private": true
+}
