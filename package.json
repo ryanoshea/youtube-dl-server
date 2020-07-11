@@ -19,5 +19,11 @@
     "prod": "tsc",
     "start": "tsc && node --es-module-specifier-resolution=node ./build/Server.js"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "eslint": "^7.4.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "2.0.5"
+  }
 }

@@ -3,9 +3,7 @@ import { spawn } from 'child_process';
 class DownloadOperations {
   private static readonly FILENAME_TEMPLATE = '%(title)s.%(ext)s';
 
-  public constructor(
-    private outputDir: string
-  ) { }
+  public constructor(private outputDir: string) {}
 
   public download(id: string, url: string) {
     const logPrefix = `[${id}] [youtube-dl] `;
@@ -15,7 +13,7 @@ class DownloadOperations {
 
     return new Promise((resolve, reject) => {
       const cmd = 'youtube-dl';
-      const args = ["--add-metadata", "-i", '-o', outPath, url];
+      const args = ['--add-metadata', '-i', '-o', outPath, url];
       console.log(`${logPrefix}Executing command: $ ${cmd} ${args.join(' ')}`);
 
       const ls = spawn(cmd, args);
@@ -40,7 +38,7 @@ class DownloadOperations {
           reject();
         }
       });
-    })
+    });
   }
 }
 

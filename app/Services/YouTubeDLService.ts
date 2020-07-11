@@ -10,23 +10,20 @@ class YouTubeDLService {
     service.use(bodyParser.json());
     const operations = new DownloadOperations(outputDir);
 
-    service.post<{}, DownloadResponse, DownloadRequest>(
-      "/download",
-      (req, res) => {
-        const url = req.body.url;
-        const id = uuidv4();
+    service.post<{}, DownloadResponse, DownloadRequest>('/download', (req, res) => {
+      const url = req.body.url;
+      const id = uuidv4();
 
-        console.log(`[${id}] Starting download for: ${url}`);
-        operations
-          .download(id, url)
-          .then(() => console.log(`[${id}] Finished download for: ${url}`))
-          .catch(() => console.log(`[${id}] Failed download for: ${url}`));
+      console.log(`[${id}] Starting download for: ${url}`);
+      operations
+        .download(id, url)
+        .then(() => console.log(`[${id}] Finished download for: ${url}`))
+        .catch(() => console.log(`[${id}] Failed download for: ${url}`));
 
-        res.send({
-          message: `Video queued for download ${id} - ${url}`,
-        });
-      }
-    );
+      res.send({
+        message: `Video queued for download ${id} - ${url}`,
+      });
+    });
 
     return service;
   }

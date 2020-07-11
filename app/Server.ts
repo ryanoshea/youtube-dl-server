@@ -17,6 +17,4 @@ const Server = express();
 Server.use('/health', HealthCheck);
 Server.use('/youtube', YouTubeDLService.createService(outputDir));
 
-Server.listen(port, () =>
-  console.log(`Server listening at http://localhost:${port}`)
-);
+Server.listen(port, () => console.log(`Server listening at http://localhost:${port}`));
