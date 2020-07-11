@@ -17,7 +17,7 @@
   "scripts": {
     "tsc": "tsc",
     "prod": "tsc",
-    "start": "tsc && node --es-module-specifier-resolution=node ./build/Server.js"
+    "start": "tsc && node --es-module-specifier-resolution=node ./build/Server.js ~/Downloads/youtube-dl 8080"
   },
   "type": "module",
   "devDependencies": {
