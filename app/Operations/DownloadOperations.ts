@@ -1,5 +1,4 @@
-import path from "path";
-import { spawn } from "child_process";
+import { spawn } from 'child_process';
 
 class DownloadOperations {
   private static readonly FILENAME_TEMPLATE = '%(title)s.%(ext)s';
@@ -8,36 +7,33 @@ class DownloadOperations {
     private outputDir: string
   ) { }
 
-  public download(url: string) {
-    const isWindows = process.platform === "win32";
-    const separator = isWindows ? "\\" : "/";
+  public download(id: string, url: string) {
+    const logPrefix = `[${id}] [youtube-dl] `;
+    const isWindows = process.platform === 'win32';
+    const separator = isWindows ? '\\' : '/';
     let outPath = `${this.outputDir}${separator}${DownloadOperations.FILENAME_TEMPLATE}`;
-    if (outPath.match(/\s/)) {
-      outPath = `"${outPath}"`;
-    }
 
     return new Promise((resolve, reject) => {
-      const ls = spawn("youtube-dl", [
-        "--add-metadata",
-        "-i",
-        `-o ${outPath}`,
-        url,
-      ]);
+      const cmd = 'youtube-dl';
+      const args = ["--add-metadata", "-i", '-o', outPath, url];
+      console.log(`${logPrefix}Executing command: $ ${cmd} ${args.join(' ')}`);
 
-      ls.stdout.on("data", data => {
-        console.log(`stdout: ${data}`);
+      const ls = spawn(cmd, args);
+
+      ls.stdout.on('data', data => {
+        console.log(`${logPrefix}${data}`);
       });
 
-      ls.stderr.on("data", data => {
-        console.log(`stderr: ${data}`);
+      ls.stderr.on('data', data => {
+        console.log(`${logPrefix}ERR: ${data}`);
       });
 
-      ls.on("error", error => {
-        console.log(`error: ${error.message}`);
+      ls.on('error', error => {
+        console.log(`${logPrefix}ERR: ${error.message}`);
       });
 
-      ls.on("close", code => {
-        console.log(`child process exited with code ${code}`);
+      ls.on('close', code => {
+        console.log(`${logPrefix}Child process exited with code ${code}`);
         if (code === 0) {
           resolve();
         } else {

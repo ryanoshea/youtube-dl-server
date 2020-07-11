@@ -1,5 +1,6 @@
 import express, { Express } from 'express';
 import bodyParser from 'body-parser';
+import { v4 as uuidv4 } from 'uuid';
 import { DownloadRequest, DownloadResponse } from '../Contracts/YoutubeDLService';
 import DownloadOperations from '../Operations/DownloadOperations';
 
@@ -13,16 +14,16 @@ class YouTubeDLService {
       "/download",
       (req, res) => {
         const url = req.body.url;
+        const id = uuidv4();
 
-        console.log(`Starting download for ${url}`)
+        console.log(`[${id}] Starting download for: ${url}`);
         operations
-          .download(url)
-          .then(() => console.log(`Completed download for ${url}`))
-          .catch(() => console.log(`Failed download for ${url}`));
-
+          .download(id, url)
+          .then(() => console.log(`[${id}] Finished download for: ${url}`))
+          .catch(() => console.log(`[${id}] Failed download for: ${url}`));
 
         res.send({
-          message: `Video queued for download: ${url}`,
+          message: `Video queued for download ${id} - ${url}`,
         });
       }
     );
