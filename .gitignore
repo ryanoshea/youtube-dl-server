@@ -106,5 +106,8 @@ dist
 # Yarn
 .yarn/
 
+# Mac
+.DS_Store
+
 # Build destination
 build/

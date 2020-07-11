@@ -12,7 +12,7 @@
                 "<node_internals>/**"
             ],
             "preLaunchTask": "tsc: build - tsconfig.json",
-            "args": ["8080"],
+            "args": ["~/Downloads/youtube-dl-server", "8080"],
             "program": "${workspaceFolder}/app/Server.ts",
             "runtimeArgs": ["--es-module-specifier-resolution=node"],
             "runtimeVersion": "13.14.0",
