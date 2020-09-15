@@ -35,15 +35,18 @@ Request:
 
 ```json
 {
-  "url": "http://example.com/v?id=XXXXXX"
+  "url": "http://example.com/v?id=XXXXXX",
+  "subDir": "my-folder"
 }
 ```
+
+`subDir` is optional
 
 Response:
 
 ```json
 {
-  "message": "Video queued for download 3d0f21cb-575d-408d-b442-500655767394 - http://example.com/v?id=XXXXXX"
+  "message": "Video queued for download with ID cf69998b-c03e-4c0e-9b23-6f78d9406cf4 - http://example.com/v?id=XXXXXX"
 }
 ```
 
