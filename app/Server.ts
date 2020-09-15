@@ -1,11 +1,14 @@
 import express from 'express';
 import YouTubeDLService from './Services/YouTubeDLService';
 import HealthCheck from './Services/HealthCheck';
+import Logger from './Log/Logger';
+
+const log = new Logger('server');
 
 const argv = process.argv.slice(2);
 
 if (argv.length === 0) {
-  console.log('At least one argument is required: please provide an output directory.');
+  log.error('At least one argument is required: please provide an output directory.');
   process.exit(1);
 }
 
@@ -17,4 +20,4 @@ const Server = express();
 Server.use('/health', HealthCheck);
 Server.use('/youtube', YouTubeDLService.createService(outputDir));
 
-Server.listen(port, () => console.log(`Server listening at http://localhost:${port}`));
+Server.listen(port, () => log.debug(`Server listening at http://localhost:${port}`));
