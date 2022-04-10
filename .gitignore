@@ -114,3 +114,6 @@ build/
 
 # Default download volume
 downloads/
+
+# Docker Compose
+docker-compose.override.yml
