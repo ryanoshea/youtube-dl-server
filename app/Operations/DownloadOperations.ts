@@ -7,7 +7,7 @@ class DownloadOperations {
 
   public constructor(private outputDir: string) {}
 
-  public download(id: string, url: string, subDir: string) {
+  public download(id: string, url: string, subDir: string): Promise<void> {
     const log = this.log.child(id, 'youtube-dl');
 
     const outPath = new DownloadConfig(this.outputDir, subDir).getOutDir();
