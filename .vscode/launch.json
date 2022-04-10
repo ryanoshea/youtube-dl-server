@@ -15,7 +15,7 @@
             "args": ["/Users/ryan/Downloads/youtube-dl-server", "8080"],
             "program": "${workspaceFolder}/app/Server.ts",
             "runtimeArgs": ["--es-module-specifier-resolution=node"],
-            "runtimeVersion": "13.14.0",
+            "runtimeVersion": "16.14.2",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]

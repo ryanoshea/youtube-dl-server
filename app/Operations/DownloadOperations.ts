@@ -7,14 +7,14 @@ class DownloadOperations {
 
   public constructor(private outputDir: string) {}
 
-  public download(id: string, url: string, subDir: string) {
+  public download(id: string, url: string, subDir: string): Promise<void> {
     const log = this.log.child(id, 'youtube-dl');
 
     const outPath = new DownloadConfig(this.outputDir, subDir).getOutDir();
 
     return new Promise((resolve, reject) => {
-      const cmd = 'youtube-dl';
-      const args = ['--add-metadata', '-i', '-o', outPath, url];
+      const cmd = 'yt-dlp';
+      const args = ['--add-metadata', '-i', '-f', 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4', '-o', outPath, url];
 
       new ChildProcess(cmd, args)
         .onStart(pid => log.debug(`Executing command: $ ${cmd} ${args.join(' ')} with PID ${pid}`))

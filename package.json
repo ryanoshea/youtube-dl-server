@@ -15,8 +15,8 @@
     "uuid": "^8.2.0"
   },
   "scripts": {
-    "tsc": "tsc",
-    "prod": "tsc",
+    "build": "tsc",
+    "clean": "rm -rf ./build",
     "start": "tsc && node --es-module-specifier-resolution=node ./build/Server.js ~/Downloads/youtube-dl 8080"
   },
   "type": "module",
