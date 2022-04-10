@@ -111,3 +111,6 @@ dist
 
 # Build destination
 build/
+
+# Default download volume
+downloads/
