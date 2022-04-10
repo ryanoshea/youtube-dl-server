@@ -13,7 +13,7 @@ class DownloadOperations {
     const outPath = new DownloadConfig(this.outputDir, subDir).getOutDir();
 
     return new Promise((resolve, reject) => {
-      const cmd = 'youtube-dl';
+      const cmd = 'yt-dlp';
       const args = ['--add-metadata', '-i', '-o', outPath, url];
 
       new ChildProcess(cmd, args)
