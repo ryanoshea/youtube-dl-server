@@ -14,7 +14,7 @@ class DownloadOperations {
 
     return new Promise((resolve, reject) => {
       const cmd = 'yt-dlp';
-      const args = ['--add-metadata', '-i', '-o', outPath, url];
+      const args = ['--add-metadata', '-i', '-f', 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4', '-o', outPath, url];
 
       new ChildProcess(cmd, args)
         .onStart(pid => log.debug(`Executing command: $ ${cmd} ${args.join(' ')} with PID ${pid}`))
